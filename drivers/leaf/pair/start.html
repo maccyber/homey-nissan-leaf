@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <header class="homey-header">
+      <h1 class="homey-title" data-i18n="settings.title">
+      </h1>
+    </header>
+
+    <fieldset class="homey-form-fieldset">
+      <legend class="homey-form-legend" data-i18n="settings.settings.title" />
+
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="username" data-i18n="pair.username" />
+        <input class="homey-form-input" id="username" type="text" value="" />
+      </div>
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="password" data-i18n="pair.password" />
+        <input class="homey-form-input" id="password" type="password" value="" />
+      </div>
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="pollInterval" data-i18n="pair.poll" />
+        <input class="homey-form-input" id="pollInterval" type="number" value="240" />
+      </div>
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="regionCode" data-i18n="pair.region" />
+        <select class="homey-form-select" name="regionCode" id="regionCode" value="NE">
+          <option value="NE">Europe</option>
+          <option value="NCI">Canada</option>
+          <option value="NNA">USA</option>
+          <option value="NMA">Australia</option>
+          <option value="NML">Japan</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <button id="save" class="homey-button-primary-full">Save</button>
+
+    <script type="application/javascript">
+      var usernameElement = document.getElementById("username");
+      var passwordElement = document.getElementById("password");
+      var regionCodeElement = document.getElementById("regionCode");
+      var pollIntervalElement = document.getElementById("pollInterval");
+      var saveElement = document.getElementById("save");
+
+      saveElement.addEventListener("click", async function (e) {
+        const settings = {
+          username: usernameElement.value,
+          password: passwordElement.value,
+          regionCode: regionCodeElement.value,
+          pollInterval: pollIntervalElement.value
+        }
+
+        try {
+          Homey.setTitle(Homey.__('pair.validating'));
+          Homey.showLoadingOverlay();
+          await Homey.emit('validate', settings);
+          Homey.hideLoadingOverlay();
+          Homey.showView('list_devices');
+        } catch (error) {
+          Homey.setTitle(Homey.__('pair.title'));
+          Homey.hideLoadingOverlay();
+          Homey.alert(error, 'error');
+        }
+      })
+    </script>
+  </body>
+</html>

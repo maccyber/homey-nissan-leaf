@@ -1,0 +1,30 @@
+{
+  "id": "com.nissan.leaf",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#eb1b29",
+  "homeyCommunityTopicId": 24641,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Nissan Leaf"
+  },
+  "description": {
+    "en": "Control your Nissan Leaf"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Jonas Enge",
+    "email": "jonas.enge@gmail.com"
+  }
+}

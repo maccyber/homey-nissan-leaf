@@ -1,0 +1,42 @@
+{
+  "name": {
+    "en": "Nissan Leaf"
+  },
+  "class": "other",
+  "capabilities": [
+    "measure_battery",
+    "onoff.climate_control",
+    "onoff.charging"
+  ],
+  "capabilitiesOptions": {
+    "onoff.climate_control": { "title": "Climate Control" },
+    "onoff.charging": { "title": "Charging" }
+  },
+  "energy": {
+    "batteries": ["INTERNAL"]
+  },
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "cloud"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png"
+  },
+  "pair": [
+    {
+      "id": "start"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": { "next": "add_devices" }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}

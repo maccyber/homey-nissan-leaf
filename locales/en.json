@@ -1,0 +1,13 @@
+{
+  "settings": {
+    "title": "My Settings"
+  },
+  "pair": {
+		"validating": "Validating credentials",
+    "username": "Username",
+    "password": "Password",
+    "poll": "Poll interval (seconds)",
+    "region": "Select you region",
+    "save": "Save"
+  }
+}
