@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <header class="homey-header">
-      <h1 class="homey-title" data-i18n="settings.title">
-      </h1>
-    </header>
-
     <fieldset class="homey-form-fieldset">
-      <legend class="homey-form-legend" data-i18n="settings.settings.title" />
-
       <div class="homey-form-group">
         <label class="homey-form-label" for="username" data-i18n="pair.username" />
         <input class="homey-form-input" id="username" type="text" value="" />
@@ -36,6 +29,8 @@
     <button id="save" class="homey-button-primary-full">Save</button>
 
     <script type="application/javascript">
+      Homey.setTitle(Homey.__('pair.title'));
+
       var usernameElement = document.getElementById("username");
       var passwordElement = document.getElementById("password");
       var regionCodeElement = document.getElementById("regionCode");

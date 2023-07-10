@@ -3,6 +3,7 @@
     "title": "My Settings"
   },
   "pair": {
+    "title": "Enter your credentials",
 		"validating": "Validating credentials",
     "username": "Username",
     "password": "Password",
