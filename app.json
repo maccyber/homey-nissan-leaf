@@ -36,7 +36,9 @@
       "capabilities": [
         "measure_battery",
         "onoff.climate_control",
-        "onoff.charging"
+        "onoff.charging",
+        "is_charging",
+        "is_connected"
       ],
       "capabilitiesOptions": {
         "onoff.climate_control": {
@@ -79,5 +81,29 @@
       ],
       "id": "leaf"
     }
-  ]
+  ],
+  "capabilities": {
+    "is_charging": {
+      "type": "boolean",
+      "title": {
+        "en": "Charging status"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": true,
+      "icon": "/assets/charging.svg"
+    },
+    "is_connected": {
+      "type": "boolean",
+      "title": {
+        "en": "Connected status"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": true,
+      "icon": "/assets/pluggedin.svg"
+    }
+  }
 }

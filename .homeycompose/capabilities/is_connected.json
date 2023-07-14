@@ -1,0 +1,9 @@
+{
+  "type": "boolean",
+  "title": { "en": "Connected status" },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "uiQuickAction": true,
+  "icon": "/assets/pluggedin.svg"
+}

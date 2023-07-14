@@ -7,6 +7,7 @@ class LeafDevice extends Device {
 
   async onInit() {
     this.log('LeafDevice has been initialized');
+
     const [username, password, pollInterval, regionCode] = this.getSettings();
     this.updateCapabilities(username, password, regionCode);
     this.homey.setInterval(() => this.updateCapabilities(username, password, regionCode), pollInterval);
@@ -28,10 +29,14 @@ class LeafDevice extends Device {
       const status = await client.cachedStatus();
       const climateControlStatus = await client.climateControlStatus();
       this.log(climateControlStatus);
-      const { BatteryStatusRecords: { BatteryStatus } } = status;
-      this.log(BatteryStatus);
+      const { BatteryStatusRecords: { BatteryStatus, PluginState } } = status;
+
+      const isCharging = BatteryStatus.BatteryChargingStatus !== 'NOT_CHARGING';
+      const isConnected = PluginState !== 'NOT_CONNECTED';
+      this.log(status)
       this.setCapabilityValue('measure_battery', Number(BatteryStatus.SOC.Value)).catch(this.error);
-      // BatteryStatus.PluginState
+      this.setCapabilityValue('is_charging', isCharging).catch(this.error);
+      this.setCapabilityValue('is_connected', isConnected).catch(this.error);
     } catch (error) {
       this.error(error);
     }

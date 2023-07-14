@@ -51,7 +51,14 @@ class LeafDriver extends Driver {
             data: {
               id: profile.vin,
             },
-            capabilities: ['measure_battery', 'onoff.climate_control', 'onoff.charging'],
+            capabilities: [
+              'measure_battery',
+              'onoff.climate_control',
+              'onoff.charging',
+              'is_charging',
+              'is_connected',
+
+            ],
             settings: [
               username,
               password,

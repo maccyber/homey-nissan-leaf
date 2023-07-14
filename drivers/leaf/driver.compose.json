@@ -6,7 +6,9 @@
   "capabilities": [
     "measure_battery",
     "onoff.climate_control",
-    "onoff.charging"
+    "onoff.charging",
+    "is_charging",
+    "is_connected"
   ],
   "capabilitiesOptions": {
     "onoff.climate_control": { "title": "Climate Control" },

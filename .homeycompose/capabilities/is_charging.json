@@ -1,0 +1,9 @@
+{
+  "type": "boolean",
+  "title": { "en": "Charging status" },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "uiQuickAction": true,
+  "icon": "/assets/charging.svg"
+}
