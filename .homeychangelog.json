@@ -7,5 +7,8 @@
   },
   "1.0.3": {
     "en": "Adds is_charging and is_connected"
+  },
+  "1.0.4": {
+    "en": "Adds charging on, climatecontroll on/off"
   }
 }
