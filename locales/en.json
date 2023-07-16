@@ -8,7 +8,7 @@
     "username": "Username",
     "password": "Password",
     "poll": "Poll interval (seconds)",
-    "region": "Select you region",
+    "region": "Select your region",
     "save": "Save"
   }
 }

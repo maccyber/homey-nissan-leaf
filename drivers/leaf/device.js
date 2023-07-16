@@ -13,14 +13,33 @@ class LeafDevice extends Device {
     this.homey.setInterval(() => this.updateCapabilities(username, password, regionCode), pollInterval);
 
     this.registerCapabilityListener('onoff.climate_control', async (value) => {
-      const client = await leafConnect({ username, password, regionCode });
-      this.log(await client.climateControlStatus());
+      try {
+        const client = await leafConnect({ username, password, regionCode });
+
+        if (value) {
+          await client.climateControlTurnOn();
+          return value;
+        }
+        await client.climateControlTurnOff();
+      } catch (error) {
+        this.error(error);
+      }
       return value;
     });
 
     this.registerCapabilityListener('onoff.charging', async (value) => {
-      return false;
-      // const client = await leafConnect({ username, password, regionCode });
+      try {
+        const client = await leafConnect({ username, password, regionCode });
+
+        if (value) {
+          await client.chargingStart();
+          return value;
+        }
+      } catch (error) {
+        this.error(error);
+      }
+
+      return value;
     });
   }
 

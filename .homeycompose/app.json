@@ -6,7 +6,8 @@
   "brandColor": "#eb1b29",
   "homeyCommunityTopicId": 24641,
   "platforms": [
-    "local"
+    "local",
+    "cloud"
   ],
   "name": {
     "en": "Nissan Leaf"
