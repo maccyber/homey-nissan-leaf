@@ -16,5 +16,8 @@
   },
   "1.0.6": {
     "en": "Nothing"
+  },
+  "1.0.7": {
+    "en": "Rewrite to possibly add support for multiple cars"
   }
 }
