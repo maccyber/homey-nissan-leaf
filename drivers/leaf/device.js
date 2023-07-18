@@ -9,6 +9,7 @@ class LeafDevice extends Device {
     this.log('LeafDevice has been initialized');
 
     const [username, password, pollInterval, regionCode] = this.getSettings();
+
     this.updateCapabilities(username, password, regionCode);
     this.homey.setInterval(() => this.updateCapabilities(username, password, regionCode), pollInterval);
 

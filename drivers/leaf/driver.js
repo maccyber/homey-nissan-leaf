@@ -43,30 +43,34 @@ class LeafDriver extends Driver {
       try {
         const session = client.sessionInfo();
 
-        const { vehicle: { profile } } = session;
 
-        return [
-          {
-            name: profile.nickname,
-            data: {
-              id: profile.vin,
-            },
-            capabilities: [
-              'measure_battery',
-              'onoff.climate_control',
-              'onoff.charging',
-              'is_charging',
-              'is_connected',
+        // For some odd reason VehicleInfoList is not present on 1th gen Leafs
+        // It is only there for 2nd gen Leafs
+        const vehicles = session.vehicleInfo || session.VehicleInfoList.vehicleInfo;
 
-            ],
-            settings: [
-              username,
-              password,
-              pollInterval,
-              regionCode,
-            ],
-          },
+        const capabilities = [
+          'measure_battery',
+          'onoff.climate_control',
+          'onoff.charging',
+          'is_charging',
+          'is_connected',
         ];
+
+        const settings = [
+          username,
+          password,
+          pollInterval,
+          regionCode,
+        ];
+
+        return vehicles.map((vehicle) => ({
+          name: vehicle.nickname,
+          data: {
+            id: vehicle.vin,
+          },
+          capabilities,
+          settings,
+        }));
       } catch (error) {
         this.error(error);
         return [];
