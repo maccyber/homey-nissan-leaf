@@ -19,5 +19,8 @@
   },
   "1.0.7": {
     "en": "Rewrite to possibly add support for multiple cars"
+  },
+  "1.0.8": {
+    "en": "Logging and update deps"
   }
 }
