@@ -1,13 +1,12 @@
 {
   "id": "com.nissan.leaf",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#eb1b29",
   "homeyCommunityTopicId": 24641,
   "platforms": [
-    "local",
-    "cloud"
+    "local"
   ],
   "name": {
     "en": "Nissan Leaf"
