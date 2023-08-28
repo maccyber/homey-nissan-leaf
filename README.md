@@ -7,7 +7,8 @@ Adds support for Nissan Leaf pre May 2019
 Prerequisites:
 - [Node.js and NPM](https://nodejs.org/en/download)
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- Homey (npm i -g homey)
+- [docker](https://docs.docker.com/engine/install/)
+- [Homey](https://apps.developer.homey.app/the-basics/getting-started)
 
 ```sh
 npm install

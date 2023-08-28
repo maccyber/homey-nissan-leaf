@@ -34,7 +34,7 @@ class LeafDriver extends Driver {
       });
 
       const session = client.sessionInfo();
-      this.log(session);
+      this.log('LeafDriver: validating', JSON.stringify(session, null, 2));
 
       return session.status === 200;
     });
@@ -42,7 +42,6 @@ class LeafDriver extends Driver {
     session.setHandler('list_devices', async () => {
       try {
         const session = client.sessionInfo();
-
 
         // For some odd reason VehicleInfoList is not present on 1th gen Leafs
         // It is only there for 2nd gen Leafs
@@ -63,7 +62,7 @@ class LeafDriver extends Driver {
           regionCode,
         ];
 
-        return vehicles.map((vehicle) => ({
+        const devices = vehicles.map((vehicle) => ({
           name: vehicle.nickname,
           data: {
             id: vehicle.vin,
@@ -71,6 +70,9 @@ class LeafDriver extends Driver {
           capabilities,
           settings,
         }));
+        this.log('LeafDriver list_devices:', devices);
+
+        return devices;
       } catch (error) {
         this.error(error);
         return [];

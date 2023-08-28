@@ -47,13 +47,13 @@ class LeafDevice extends Device {
   async updateCapabilities(username, password, regionCode) {
     try {
       const client = await leafConnect({ username, password, regionCode });
-      this.log(client.sessionInfo());
+      this.log('LeafDevice updateCapabilities session:', JSON.stringify(client.sessionInfo(), null, 2));
 
       const status = await client.cachedStatus();
-      this.log(status);
+      this.log('LeafDevice updateCapabilities cachedStatus:', status);
 
       const climateControlStatus = await client.climateControlStatus();
-      this.log(climateControlStatus);
+      this.log('LeafDevice updateCapabilities climateControlStatus:', climateControlStatus);
       const racr = climateControlStatus.RemoteACRecords;
       const acIsRunning = racr.length > 0
         && racr.OperationResult !== null
