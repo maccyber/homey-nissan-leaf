@@ -14,6 +14,6 @@
     "eslint-config-athom": "3.1.1"
   },
   "dependencies": {
-    "leaf-connect": "1.1.1"
+    "leaf-connect": "1.1.2"
   }
 }
