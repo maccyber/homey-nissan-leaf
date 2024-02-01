@@ -31,5 +31,8 @@
   },
   "1.0.11": {
     "en": "Try to fix settings"
+  },
+  "1.0.12": {
+    "en": "Add possibility to change settings"
   }
 }
