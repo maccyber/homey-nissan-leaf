@@ -55,12 +55,12 @@ class LeafDriver extends Driver {
           'is_connected',
         ];
 
-        const settings = [
+        const settings = {
           username,
           password,
           pollInterval,
           regionCode,
-        ];
+        };
 
         const devices = vehicles.map((vehicle) => ({
           name: vehicle.nickname,
