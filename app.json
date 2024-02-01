@@ -82,7 +82,85 @@
           "template": "add_devices"
         }
       ],
-      "id": "leaf"
+      "id": "leaf",
+      "settings": [
+        {
+          "id": "username",
+          "type": "text",
+          "label": {
+            "en": "Username"
+          },
+          "value": "John Doe",
+          "hint": {
+            "en": "The name of the user."
+          }
+        },
+        {
+          "id": "password",
+          "type": "password",
+          "label": {
+            "en": "Password"
+          },
+          "value": "Secret",
+          "hint": {
+            "en": "The password of the user."
+          }
+        },
+        {
+          "id": "pollInterval",
+          "type": "number",
+          "label": {
+            "en": "Poll interval (seconds)"
+          },
+          "value": 240,
+          "units": {
+            "en": "seconds"
+          },
+          "hint": {
+            "en": "How often to poll for the status"
+          }
+        },
+        {
+          "id": "regionCode",
+          "type": "dropdown",
+          "value": "NE",
+          "label": {
+            "en": "Select your region"
+          },
+          "values": [
+            {
+              "id": "NE",
+              "label": {
+                "en": "Europe"
+              }
+            },
+            {
+              "id": "NCI",
+              "label": {
+                "en": "Canada"
+              }
+            },
+            {
+              "id": "NNA",
+              "label": {
+                "en": "USA"
+              }
+            },
+            {
+              "id": "NMA",
+              "label": {
+                "en": "Australia"
+              }
+            },
+            {
+              "id": "NML",
+              "label": {
+                "en": "Japan"
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "capabilities": {
