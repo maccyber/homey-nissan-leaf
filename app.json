@@ -110,7 +110,7 @@
           "id": "pollInterval",
           "type": "number",
           "label": {
-            "en": "Poll interval (seconds)"
+            "en": "Poll interval"
           },
           "value": 240,
           "units": {
