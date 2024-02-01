@@ -25,5 +25,8 @@
   },
   "1.0.9": {
     "en": "Blowfish enc should work"
+  },
+  "1.0.10": {
+    "en": "Try to fix settings"
   }
 }
