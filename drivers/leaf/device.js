@@ -11,7 +11,7 @@ class LeafDevice extends Device {
     const { username, password, pollInterval, regionCode } = this.getSettings();
 
     this.updateCapabilities(username, password, regionCode);
-    this.homey.setInterval(() => this.updateCapabilities(username, password, regionCode), pollInterval);
+    this.homey.setInterval(() => this.updateCapabilities(username, password, regionCode), pollInterval * 1000);
 
     this.registerCapabilityListener('onoff.climate_control', async (value) => {
       try {

@@ -16,7 +16,7 @@
   {
     "id": "pollInterval",
     "type": "number",
-    "label": { "en": "Poll interval (seconds)" },
+    "label": { "en": "Poll interval" },
     "value": 240,
     "units": { "en": "seconds" },
     "hint": { "en": "How often to poll for the status" }

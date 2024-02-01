@@ -25,7 +25,7 @@ class LeafDriver extends Driver {
       username = data.username;
       password = data.password;
       regionCode = data.regionCode;
-      pollInterval = Number(data.pollInterval) * 1000;
+      pollInterval = Number(data.pollInterval);
 
       client = await leafConnect({
         username,
