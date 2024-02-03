@@ -6,14 +6,17 @@
   "sdk": 3,
   "brandColor": "#eb1b29",
   "homeyCommunityTopicId": 24641,
+  "support": "mailto:jonas.enge@gmail.com",
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Nissan Leaf"
+    "en": "Nissan Leaf",
+    "no": "Nissan Leaf"
   },
   "description": {
-    "en": "Control your Nissan Leaf"
+    "en": "Control your Nissan Leaf",
+    "no": "Kontroller din Nissan Leaf"
   },
   "category": [
     "tools"
@@ -88,36 +91,43 @@
           "id": "username",
           "type": "text",
           "label": {
-            "en": "Username"
+            "en": "Username",
+            "no": "Brukernavn"
           },
           "value": "John Doe",
           "hint": {
-            "en": "The name of the user."
+            "en": "The name of the user.",
+            "no": "Navnet på brukeren."
           }
         },
         {
           "id": "password",
           "type": "password",
           "label": {
-            "en": "Password"
+            "en": "Password",
+            "no": "Passord"
           },
           "value": "Secret",
           "hint": {
-            "en": "The password of the user."
+            "en": "The password of the user.",
+            "no": "Brukerens passord."
           }
         },
         {
           "id": "pollInterval",
           "type": "number",
           "label": {
-            "en": "Poll interval"
+            "en": "Poll interval",
+            "no": "Poll intervall"
           },
           "value": 240,
           "units": {
-            "en": "seconds"
+            "en": "seconds",
+            "no": "sekunder"
           },
           "hint": {
-            "en": "How often to poll for the status"
+            "en": "How often to poll for the status",
+            "no": "Hvor ofte skal vi polle for statusen"
           }
         },
         {
@@ -125,37 +135,43 @@
           "type": "dropdown",
           "value": "NE",
           "label": {
-            "en": "Select your region"
+            "en": "Select your region",
+            "no": "Velg din region"
           },
           "values": [
             {
               "id": "NE",
               "label": {
-                "en": "Europe"
+                "en": "Europe",
+                "no": "Europa"
               }
             },
             {
               "id": "NCI",
               "label": {
-                "en": "Canada"
+                "en": "Canada",
+                "no": "Canada"
               }
             },
             {
               "id": "NNA",
               "label": {
-                "en": "USA"
+                "en": "USA",
+                "no": "USA"
               }
             },
             {
               "id": "NMA",
               "label": {
-                "en": "Australia"
+                "en": "Australia",
+                "no": "Australia"
               }
             },
             {
               "id": "NML",
               "label": {
-                "en": "Japan"
+                "en": "Japan",
+                "no": "Japan"
               }
             }
           ]
@@ -167,7 +183,8 @@
     "is_charging": {
       "type": "boolean",
       "title": {
-        "en": "Charging status"
+        "en": "Charging status",
+        "no": "Ladestatus"
       },
       "getable": true,
       "setable": false,
@@ -178,7 +195,8 @@
     "is_connected": {
       "type": "boolean",
       "title": {
-        "en": "Connected status"
+        "en": "Connected status",
+        "no": "Tilkoblingsstatus"
       },
       "getable": true,
       "setable": false,

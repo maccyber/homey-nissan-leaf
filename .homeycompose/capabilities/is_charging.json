@@ -1,6 +1,9 @@
 {
   "type": "boolean",
-  "title": { "en": "Charging status" },
+  "title": {
+    "en": "Charging status",
+    "no": "Ladestatus"
+  },
   "getable": true,
   "setable": false,
   "uiComponent": "sensor",

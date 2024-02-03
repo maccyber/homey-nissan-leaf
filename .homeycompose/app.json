@@ -5,14 +5,17 @@
   "sdk": 3,
   "brandColor": "#eb1b29",
   "homeyCommunityTopicId": 24641,
+  "support": "mailto:jonas.enge@gmail.com",
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Nissan Leaf"
+    "en": "Nissan Leaf",
+    "no": "Nissan Leaf"
   },
   "description": {
-    "en": "Control your Nissan Leaf"
+    "en": "Control your Nissan Leaf",
+    "no": "Kontroller din Nissan Leaf"
   },
   "category": [
     "tools"
