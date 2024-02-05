@@ -43,5 +43,8 @@
   },
   "1.0.15": {
     "en": "Adds cruising_range on and off. New image and description"
+  },
+  "1.0.16": {
+    "en": "Adds small image"
   }
 }
