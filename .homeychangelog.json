@@ -40,5 +40,8 @@
   },
   "1.0.14": {
     "en": "Adds norwegian translation"
+  },
+  "1.0.15": {
+    "en": "Adds cruising_range on and off. New image and description"
   }
 }
