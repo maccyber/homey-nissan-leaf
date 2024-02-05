@@ -1,0 +1,16 @@
+{
+	"type": "number",
+	"title": {
+		"en": "Crusing range (km) AC on",
+    "no": "Rekkevidde (km) AC på"
+	},
+	"units": {
+		"en": "km",
+		"nl": "km",
+		"sv": "km"
+	},
+	"getable": true,
+	"setable": false,
+	"insights": false,
+	"icon": "./assets/speed.svg"
+}

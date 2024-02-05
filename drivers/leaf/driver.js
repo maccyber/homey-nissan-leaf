@@ -34,7 +34,6 @@ class LeafDriver extends Driver {
       });
 
       const session = client.sessionInfo();
-      this.log('LeafDriver: validating', JSON.stringify(session, null, 2));
 
       return session.status === 200;
     });
@@ -49,10 +48,12 @@ class LeafDriver extends Driver {
 
         const capabilities = [
           'measure_battery',
-          'onoff.climate_control',
-          'onoff.charging',
+          'button_climate',
+          'button_charging',
           'is_charging',
           'is_connected',
+          'cruising_range_ac_off',
+          'cruising_range_ac_on',
         ];
 
         const settings = {

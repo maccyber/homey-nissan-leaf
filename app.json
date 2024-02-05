@@ -38,19 +38,13 @@
       "class": "other",
       "capabilities": [
         "measure_battery",
-        "onoff.climate_control",
-        "onoff.charging",
+        "button_climate",
+        "button_charging",
         "is_charging",
-        "is_connected"
+        "is_connected",
+        "cruising_range_ac_on",
+        "cruising_range_ac_off"
       ],
-      "capabilitiesOptions": {
-        "onoff.climate_control": {
-          "title": "Climate Control"
-        },
-        "onoff.charging": {
-          "title": "Charging"
-        }
-      },
       "energy": {
         "batteries": [
           "INTERNAL"
@@ -180,6 +174,60 @@
     }
   ],
   "capabilities": {
+    "button_charging": {
+      "type": "boolean",
+      "title": {
+        "en": "Charging",
+        "no": "Lading"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle",
+      "uiQuickAction": false
+    },
+    "button_climate": {
+      "type": "boolean",
+      "title": {
+        "en": "Climate control",
+        "no": "Klimakontroll"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle",
+      "uiQuickAction": false
+    },
+    "cruising_range_ac_off": {
+      "type": "number",
+      "title": {
+        "en": "Crusing range (km) AC off",
+        "no": "Rekkevidde (km) AC av"
+      },
+      "units": {
+        "en": "km",
+        "nl": "km",
+        "sv": "km"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "icon": "./assets/speed.svg"
+    },
+    "cruising_range_ac_on": {
+      "type": "number",
+      "title": {
+        "en": "Crusing range (km) AC on",
+        "no": "Rekkevidde (km) AC på"
+      },
+      "units": {
+        "en": "km",
+        "nl": "km",
+        "sv": "km"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "icon": "./assets/speed.svg"
+    },
     "is_charging": {
       "type": "boolean",
       "title": {

@@ -5,15 +5,13 @@
   "class": "other",
   "capabilities": [
     "measure_battery",
-    "onoff.climate_control",
-    "onoff.charging",
+    "button_climate",
+    "button_charging",
     "is_charging",
-    "is_connected"
+    "is_connected",
+    "cruising_range_ac_on",
+    "cruising_range_ac_off"
   ],
-  "capabilitiesOptions": {
-    "onoff.climate_control": { "title": "Climate Control" },
-    "onoff.charging": { "title": "Charging" }
-  },
   "energy": {
     "batteries": ["INTERNAL"]
   },
