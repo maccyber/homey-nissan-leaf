@@ -46,5 +46,8 @@
   },
   "1.0.16": {
     "en": "Adds small image"
+  },
+  "1.0.17": {
+    "en": "Fix description"
   }
 }
