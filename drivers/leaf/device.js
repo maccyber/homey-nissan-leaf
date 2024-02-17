@@ -8,7 +8,9 @@ class LeafDevice extends Device {
   async onInit() {
     this.log('LeafDevice has been initialized');
 
-    const { username, password, pollInterval, regionCode } = this.getSettings();
+    const {
+      username, password, pollInterval, regionCode,
+    } = this.getSettings();
 
     this.updateCapabilities(username, password, regionCode);
     this.homey.setInterval(() => this.updateCapabilities(username, password, regionCode), pollInterval * 1000);
@@ -54,22 +56,28 @@ class LeafDevice extends Device {
 
       const climateControlStatus = await client.climateControlStatus();
       this.log('LeafDevice updateCapabilities climateControlStatus:', climateControlStatus);
+
       const racr = climateControlStatus.RemoteACRecords;
-      const acIsRunning = racr && racr.length > 0
-        && racr.OperationResult !== null
+      const acIsRunning = racr
+        && racr.length > 0
+        && racr.OperationResult
         && racr.OperationResult.toString().startsWith('START')
         && racr.RemoteACOperation === 'START';
-      this.setCapabilityValue('button_climate', acIsRunning);
 
-      const { BatteryStatusRecords: { BatteryStatus, PluginState, CruisingRangeAcOn, CruisingRangeAcOff } } = status;
+      const {
+        BatteryStatusRecords: {
+          BatteryStatus, PluginState, CruisingRangeAcOn, CruisingRangeAcOff,
+        },
+      } = status;
 
-      const isCharging = BatteryStatus.BatteryChargingStatus !== 'NOT_CHARGING';
+      const isCharging = BatteryStatus && BatteryStatus.BatteryChargingStatus !== 'NOT_CHARGING';
       const isConnected = PluginState !== 'NOT_CONNECTED';
 
+      this.setCapabilityValue('button_climate', acIsRunning).catch(this.error);
+      this.setCapabilityValue('button_charging', isConnected && !isCharging).catch(this.error);
       this.setCapabilityValue('measure_battery', Number(BatteryStatus.SOC.Value)).catch(this.error);
       this.setCapabilityValue('is_charging', isCharging).catch(this.error);
       this.setCapabilityValue('is_connected', isConnected).catch(this.error);
-      this.setCapabilityValue('button_charging', isConnected && !isCharging).catch(this.error);
       this.setCapabilityValue('cruising_range_ac_off', Number(CruisingRangeAcOff) / 1000).catch(this.error);
       this.setCapabilityValue('cruising_range_ac_on', Number(CruisingRangeAcOn) / 1000).catch(this.error);
     } catch (error) {

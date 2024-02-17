@@ -1,13 +1,13 @@
 {
   "settings": {
-    "title": "Instillinger"
+    "title": "Innstillinger"
   },
   "pair": {
     "title": "Skriv inn påloggingsinformasjonen din",
-		"validating": "Validerer påloggingsinformasjonen",
+    "validating": "Validerer påloggingsinformasjonen",
     "username": "Brukernavn",
     "password": "Passord",
-    "poll": "Polle intervall (seconds)",
+    "poll": "Polle intervall (sekunder)",
     "region": "Velg din region",
     "save": "Lagre"
   }
