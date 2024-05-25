@@ -55,5 +55,11 @@
   },
   "1.0.19": {
     "en": "Remove logging, update dependencies"
+  },
+  "1.0.20": {
+    "en": "Update URL to gdcportal"
+  },
+  "1.0.21": {
+    "en": "Update gdcportal URL"
   }
 }
