@@ -61,5 +61,8 @@
   },
   "1.0.21": {
     "en": "Update gdcportal URL"
+  },
+  "1.0.22": {
+    "en": "Update leaf-connect version. Remove user agent"
   }
 }
