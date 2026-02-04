@@ -1,0 +1,25 @@
+{
+  "title": {
+    "en": "Battery level is above"
+  },
+  "titleFormatted": {
+    "en": "Battery level is above [[percentage]]%"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf|leaf-ze1"
+    },
+    {
+      "type": "range",
+      "name": "percentage",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "%",
+      "labelMultiplier": 1,
+      "labelDecimals": 0
+    }
+  ]
+}

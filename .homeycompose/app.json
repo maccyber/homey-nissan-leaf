@@ -1,9 +1,9 @@
 {
   "id": "com.nissan.leaf",
-  "version": "1.0.23",
+  "version": "2.0.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
-  "brandColor": "#eb1b29",
+  "brandColor": "#C3002F",
   "homeyCommunityTopicId": 24641,
   "support": "mailto:jonas.enge@gmail.com",
   "platforms": [
@@ -14,19 +14,62 @@
     "no": "Nissan Leaf"
   },
   "description": {
-    "en": "Switch to smarter driving",
-    "no": "Bytt til smartere kjøring"
+    "en": "Control and monitor your Nissan Leaf electric vehicle",
+    "no": "Kontroller og overvåk din Nissan Leaf elbil"
   },
   "category": [
-    "tools"
+    "energy"
   ],
+  "tags": {
+    "en": [
+      "nissan",
+      "leaf",
+      "ev",
+      "electric vehicle",
+      "charging",
+      "climate",
+      "nissan connect",
+      "carwings",
+      "ze0",
+      "ze1"
+    ],
+    "no": [
+      "nissan",
+      "leaf",
+      "elbil",
+      "lading",
+      "klima",
+      "nissan connect",
+      "carwings"
+    ]
+  },
   "permissions": [],
   "images": {
     "small": "/assets/images/small.png",
-    "large": "/assets/images/large.png"
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
   },
   "author": {
     "name": "Jonas Enge",
     "email": "jonas.enge@gmail.com"
-  }
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Steffen Fridtjofsen",
+        "email": "steffen@oppdal.com"
+      }
+    ]
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "steffenoppdal"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/JonasEnge/homey-nissan-leaf/issues"
+  },
+  "homepage": "https://github.com/JonasEnge/homey-nissan-leaf"
 }

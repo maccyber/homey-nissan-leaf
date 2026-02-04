@@ -1,0 +1,31 @@
+{
+  "title": {
+    "en": "Vehicle data was refreshed"
+  },
+  "hint": {
+    "en": "Triggered when fresh data is received from the vehicle after a wake-up"
+  },
+  "tokens": [
+    {
+      "name": "battery",
+      "type": "number",
+      "title": {
+        "en": "Battery %"
+      }
+    },
+    {
+      "name": "range",
+      "type": "number",
+      "title": {
+        "en": "Range (km)"
+      }
+    }
+  ],
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf|leaf-ze1"
+    }
+  ]
+}

@@ -1,86 +1,97 @@
 'use strict';
 
-const { Driver } = require('homey');
-const leafConnect = require('leaf-connect');
+const Homey = require('homey');
+const NissanLegacyAPI = require('../../lib/NissanLegacyAPI');
 
-class LeafDriver extends Driver {
-
+class LeafDriver extends Homey.Driver {
+  /**
+   * onInit is called when the driver is initialized.
+   */
   async onInit() {
-    this.log('LeafDriver has been initialized');
+    this.log('Nissan Leaf (pre-2019) driver has been initialized');
   }
 
+  /**
+   * onPair is called when a user starts pairing
+   */
   async onPair(session) {
-    let username;
-    let password;
-    let client;
-    let regionCode;
-    let pollInterval;
+    let credentials = null;
 
+    // Handle validation from custom pairing page
     session.setHandler('validate', async (data) => {
-      if (!data.username) throw Error('Enter username');
-      if (!data.password) throw Error('Enter password');
-      if (!data.regionCode) throw Error('Select region code');
-      if (!data.pollInterval) throw Error('Enter poll interval');
+      const { username, password, regionCode, pollInterval } = data;
 
-      username = data.username;
-      password = data.password;
-      regionCode = data.regionCode;
-      pollInterval = Number(data.pollInterval);
+      if (!username || !password) {
+        throw new Error('Username and password are required');
+      }
 
-      client = await leafConnect({
-        username,
-        password,
-        regionCode,
-      });
+      try {
+        this.log('Validating credentials for region:', regionCode);
+        
+        // Test the credentials
+        const api = new NissanLegacyAPI(username, password, regionCode || 'NE');
+        const sessionInfo = await api.getSession();
+        
+        if (sessionInfo.status !== 200) {
+          throw new Error('Authentication failed');
+        }
 
-      const session = client.sessionInfo();
+        // Store credentials for later use
+        credentials = {
+          username,
+          password,
+          regionCode: regionCode || 'NE',
+          pollInterval: pollInterval || 240,
+          api
+        };
 
-      return session.status === 200;
+        this.log('Credentials validated successfully');
+        return true;
+        
+      } catch (error) {
+        this.error('Validation failed:', error);
+        throw new Error('Login failed. Please check your credentials.');
+      }
     });
 
     session.setHandler('list_devices', async () => {
+      if (!credentials) {
+        throw new Error('Please validate your credentials first');
+      }
+
       try {
-        const session = client.sessionInfo();
+        const vehicles = await credentials.api.getVehicles();
+        
+        if (!vehicles || vehicles.length === 0) {
+          throw new Error('No vehicles found on this account');
+        }
 
-        // For some odd reason VehicleInfoList is not present on 1th gen Leafs
-        // It is only there for 2nd gen Leafs
-        const vehicles = session.vehicleInfo || session.VehicleInfoList.vehicleInfo;
+        this.log(`Found ${vehicles.length} vehicle(s)`);
 
-        const capabilities = [
-          'measure_battery',
-          'button_climate',
-          'button_charging',
-          'is_charging',
-          'is_connected',
-          'cruising_range_ac_off',
-          'cruising_range_ac_on',
-        ];
-
-        const settings = {
-          username,
-          password,
-          pollInterval,
-          regionCode,
-        };
-
-        const devices = vehicles.map((vehicle) => ({
-          name: vehicle.nickname,
-          data: {
-            id: vehicle.vin,
-          },
-          capabilities,
-          settings,
-        }));
-        this.log('LeafDriver list_devices:', devices);
-
-        return devices;
+        return vehicles.map(vehicle => {
+          const vin = vehicle.vin || vehicle.custom_sessionid;
+          const nickname = vehicle.nickname || `Nissan Leaf (${vin ? vin.substring(vin.length - 6) : 'Unknown'})`;
+          
+          return {
+            name: nickname,
+            data: {
+              id: vin
+            },
+            settings: {
+              username: credentials.username,
+              password: credentials.password,
+              regionCode: credentials.regionCode,
+              pollInterval: credentials.pollInterval
+            }
+          };
+        });
+        
       } catch (error) {
-        this.error(error);
-        return [];
+        this.error('Error listing devices:', error);
+        throw new Error('Failed to discover vehicles. Please try again.');
       }
     });
   }
-
 }
 
 module.exports = LeafDriver;

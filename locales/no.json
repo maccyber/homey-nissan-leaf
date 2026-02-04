@@ -1,6 +1,25 @@
 {
+  "drivers": {
+    "leaf": {
+      "name": "Nissan Leaf (Før 2019)",
+      "description": "Nissan Leaf ZE0 og AZE0 modeller (2011-2017)"
+    },
+    "leaf-ze1": {
+      "name": "Nissan Leaf (2019+)",
+      "description": "Nissan Leaf ZE1 og nyere modeller"
+    }
+  },
   "settings": {
-    "title": "Innstillinger"
+    "title": "Innstillinger",
+    "polling_interval_idle": "Henting når inaktiv (minutter)",
+    "polling_interval_charging": "Henting under lading (minutter)",
+    "keep_awake": "Hold bilen våken",
+    "persistent_climate_max_minutes": "Maks kjøretid (minutter)",
+    "vin": "Chassisnummer",
+    "username": "E-post",
+    "password": "Passord",
+    "pollInterval": "Hentingsintervall (sekunder)",
+    "regionCode": "Region"
   },
   "pair": {
     "title": "Skriv inn påloggingsinformasjonen din",
@@ -9,6 +28,46 @@
     "password": "Passord",
     "poll": "Polle intervall (sekunder)",
     "region": "Velg din region",
-    "save": "Lagre"
+    "save": "Lagre",
+    "login": {
+      "title": "Nissan Connect Innlogging",
+      "username": "E-post",
+      "password": "Passord"
+    },
+    "legacy": {
+      "title": "Nissan Leaf Innlogging",
+      "username": "E-post",
+      "password": "Passord",
+      "region": "Region",
+      "pollInterval": "Hentingsintervall (sekunder)",
+      "validate": "Valider",
+      "validating": "Validerer...",
+      "success": "Innlogging vellykket!",
+      "error": "Innlogging feilet. Vennligst sjekk legitimasjonen din.",
+      "regions": {
+        "NE": "Europa",
+        "NCI": "Canada",
+        "NNA": "USA",
+        "NMA": "Australia",
+        "NML": "Japan"
+      }
+    }
+  },
+  "notifications": {
+    "climate_started": "Klimaanlegg startet",
+    "climate_stopped": "Klimaanlegg stoppet",
+    "climate_starting": "Starter klimaanlegg...",
+    "climate_stopping": "Stopper klimaanlegg...",
+    "climate_failed": "Klimaanlegg feilet - prøv igjen",
+    "climate_restarting": "Starter klimaanlegg på nytt...",
+    "persistent_climate_starting": "Starter vedvarende klimaanlegg...",
+    "charging_started": "Lading startet",
+    "refreshing": "Oppdaterer kjøretøydata..."
+  },
+  "errors": {
+    "auth_failed": "Autentisering feilet",
+    "no_vehicles": "Ingen kjøretøy funnet på denne kontoen",
+    "api_error": "API-feil",
+    "timeout": "Forespørselen tidsavbrutt"
   }
 }

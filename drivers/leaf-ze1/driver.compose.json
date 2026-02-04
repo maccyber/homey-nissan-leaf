@@ -1,0 +1,246 @@
+{
+  "name": {
+    "en": "Nissan Leaf (2019+)",
+    "no": "Nissan Leaf (2019+)"
+  },
+  "class": "other",
+  "capabilities": [
+    "measure_battery",
+    "measure_range",
+    "measure_charge_power",
+    "measure_odometer",
+    "measure_temperature.inside",
+    "onoff.climate",
+    "target_temperature",
+    "charging_status",
+    "connected_status",
+    "refreshing_status",
+    "button_refresh_all",
+    "measure_latitude",
+    "measure_longitude"
+  ],
+  "capabilitiesOptions": {
+    "measure_temperature.inside": {
+      "title": {
+        "en": "Inside Temperature",
+        "no": "Innertemperatur"
+      }
+    },
+    "onoff.climate": {
+      "title": {
+        "en": "Climate Control",
+        "no": "Klimakontroll"
+      }
+    },
+    "charging_status": {
+      "title": {
+        "en": "Charging",
+        "no": "Lader"
+      }
+    },
+    "connected_status": {
+      "title": {
+        "en": "Connected to Charger",
+        "no": "Koblet til lader"
+      }
+    },
+    "refreshing_status": {
+      "title": {
+        "en": "Refreshing Data",
+        "no": "Oppdaterer data"
+      }
+    },
+    "button_refresh_all": {
+      "title": {
+        "en": "Refresh All Data",
+        "no": "Oppdater all data"
+      }
+    },
+    "measure_range": {
+      "title": {
+        "en": "Range",
+        "no": "Rekkevidde"
+      },
+      "units": {
+        "en": "km"
+      }
+    },
+    "measure_odometer": {
+      "title": {
+        "en": "Odometer",
+        "no": "Kilometerstand"
+      },
+      "units": {
+        "en": "km"
+      }
+    },
+    "measure_charge_power": {
+      "title": {
+        "en": "Charging Power",
+        "no": "Ladeeffekt"
+      },
+      "units": {
+        "en": "kW"
+      }
+    },
+    "measure_latitude": {
+      "title": {
+        "en": "Latitude",
+        "no": "Breddegrad"
+      }
+    },
+    "measure_longitude": {
+      "title": {
+        "en": "Longitude",
+        "no": "Lengdegrad"
+      }
+    },
+    "target_temperature": {
+      "min": 16,
+      "max": 30,
+      "step": 1
+    }
+  },
+  "energy": {
+    "batteries": ["INTERNAL"]
+  },
+  "platforms": ["local"],
+  "connectivity": ["cloud"],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png"
+  },
+  "pair": [
+    {
+      "id": "login_credentials",
+      "template": "login_credentials",
+      "options": {
+        "title": {
+          "en": "Nissan Connect Login",
+          "no": "Nissan Connect innlogging"
+        },
+        "usernameLabel": {
+          "en": "Email",
+          "no": "E-post"
+        },
+        "passwordLabel": {
+          "en": "Password",
+          "no": "Passord"
+        }
+      },
+      "navigation": {
+        "next": "list_devices"
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices"
+    }
+  ],
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "en": "Polling Settings",
+        "no": "Polling-innstillinger"
+      },
+      "children": [
+        {
+          "id": "polling_interval_idle",
+          "type": "number",
+          "label": {
+            "en": "Polling when idle (minutes)",
+            "no": "Polling ved hvile (minutter)"
+          },
+          "value": 60,
+          "min": 15,
+          "max": 120,
+          "hint": {
+            "en": "How often to check when not connected to charger (saves 12V battery)",
+            "no": "Hvor ofte sjekke når ikke koblet til lader (sparer 12V batteri)"
+          }
+        },
+        {
+          "id": "polling_interval_charging",
+          "type": "number",
+          "label": {
+            "en": "Polling when charging (minutes)",
+            "no": "Polling under lading (minutter)"
+          },
+          "value": 10,
+          "min": 5,
+          "max": 30,
+          "hint": {
+            "en": "How often to check when connected or charging",
+            "no": "Hvor ofte sjekke når tilkoblet eller lader"
+          }
+        },
+        {
+          "id": "keep_awake",
+          "type": "checkbox",
+          "label": {
+            "en": "Keep car awake",
+            "no": "Hold bilen våken"
+          },
+          "value": false,
+          "hint": {
+            "en": "Poll every 30 minutes to keep car responsive (uses more 12V battery)",
+            "no": "Poll hvert 30. minutt for raskere respons (bruker mer 12V batteri)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "en": "Persistent Climate",
+        "no": "Vedvarende klimakontroll"
+      },
+      "children": [
+        {
+          "id": "persistent_climate_max_minutes",
+          "type": "number",
+          "label": {
+            "en": "Max runtime (minutes)",
+            "no": "Maks kjøretid (minutter)"
+          },
+          "value": 30,
+          "min": 10,
+          "max": 120,
+          "hint": {
+            "en": "Maximum time persistent climate will run before auto-stopping",
+            "no": "Maksimal tid vedvarende klimakontroll kjører før automatisk stopp"
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "en": "Vehicle",
+        "no": "Kjøretøy"
+      },
+      "children": [
+        {
+          "id": "vin",
+          "type": "text",
+          "label": {
+            "en": "VIN",
+            "no": "VIN"
+          },
+          "value": "",
+          "hint": {
+            "en": "Vehicle Identification Number (auto-detected during pairing)",
+            "no": "Kjøretøyets identifikasjonsnummer (automatisk oppdaget under paring)"
+          }
+        }
+      ]
+    }
+  ]
+}

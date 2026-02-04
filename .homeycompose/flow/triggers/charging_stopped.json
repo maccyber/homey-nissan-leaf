@@ -1,0 +1,22 @@
+{
+  "title": {
+    "en": "Charging stopped"
+  },
+  "tokens": [
+    {
+      "name": "battery",
+      "type": "number",
+      "title": {
+        "en": "Battery level"
+      },
+      "example": 95
+    }
+  ],
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf|leaf-ze1"
+    }
+  ]
+}

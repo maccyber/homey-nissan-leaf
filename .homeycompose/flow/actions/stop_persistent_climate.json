@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "Stop persistent climate"
+  },
+  "hint": {
+    "en": "Stop persistent climate mode and turn off climate control (2019+ models only)"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf-ze1"
+    }
+  ]
+}

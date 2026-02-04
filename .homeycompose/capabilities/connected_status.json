@@ -1,0 +1,17 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Connected"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/plug.svg",
+  "insights": true,
+  "insightsTitleTrue": {
+    "en": "Connected to charger"
+  },
+  "insightsTitleFalse": {
+    "en": "Disconnected from charger"
+  }
+}

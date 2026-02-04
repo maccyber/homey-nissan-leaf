@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "Start charging"
+  },
+  "hint": {
+    "en": "Send command to start charging (pre-2019 models only)"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf"
+    }
+  ]
+}
