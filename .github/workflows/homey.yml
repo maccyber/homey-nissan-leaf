@@ -1,27 +1,51 @@
 name: Publish Homey App
 on:
   push:
+    branches:
+      - main
 
 jobs:  
-    main:
+    publish:
       name: Publish Homey App
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v4
+        - name: Checkout repository
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 2
 
-        - name: Use Node.js
+        - name: Setup Node.js
           uses: actions/setup-node@v4
           with:
             node-version: '20.x'
+            cache: 'npm'
+          
+        - name: Check Version Increment
+          run: |
+            CURRENT_VERSION=$(node -p "require('./package.json').version")
+            
+            PREVIOUS_JSON=$(git show HEAD~1:package.json 2>/dev/null || echo "{}")
+            PREVIOUS_VERSION=$(echo "$PREVIOUS_JSON" | node -e "console.log(JSON.parse(require('fs').readFileSync(0)).version || '0.0.0')")
+            
+            echo "Current Version: $PREVIOUS_VERSION"
+            echo "New Version:  $CURRENT_VERSION"
 
-        - run: npm i --package-lock-only
-        
+            if [ "$CURRENT_VERSION" == "$PREVIOUS_VERSION" ]; then
+              echo "::error::Version ($CURRENT_VERSION) has not been incremented since the last commit. Please update package.json before merging."
+              exit 1
+            fi
+            
+        - name: Install dependencies
+          run: npm ci
+
         - name: Publish
+          if: success()
           uses: athombv/github-action-homey-app-publish@master
           id: publish
           with:
             personal_access_token: ${{ secrets.HOMEY_PAT }}
 
-        - name: URL
+        - name: Summary
           run: |
+            echo "### 🚀 App Published Successfully" >> $GITHUB_STEP_SUMMARY
             echo "Manage your app at ${{ steps.publish.outputs.url }}." >> $GITHUB_STEP_SUMMARY

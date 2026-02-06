@@ -1,0 +1,29 @@
+{
+  "title": {
+    "en": "Start climate control"
+  },
+  "titleFormatted": {
+    "en": "Start climate control at [[temperature]]°C"
+  },
+  "hint": {
+    "en": "Start climate control at a specific temperature (2019+ models only)"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf-ze1"
+    },
+    {
+      "type": "range",
+      "name": "temperature",
+      "min": 16,
+      "max": 28,
+      "step": 1,
+      "label": "°C",
+      "labelMultiplier": 1,
+      "labelDecimals": 0,
+      "value": 21
+    }
+  ]
+}

@@ -1,14 +1,73 @@
 {
+  "drivers": {
+    "leaf": {
+      "name": "Nissan Leaf (Pre-2019)",
+      "description": "Nissan Leaf ZE0 and AZE0 models (2011-2017)"
+    },
+    "leaf-ze1": {
+      "name": "Nissan Leaf (2019+)",
+      "description": "Nissan Leaf ZE1 and newer models"
+    }
+  },
   "settings": {
-    "title": "My Settings"
+    "title": "My Settings",
+    "polling_interval_idle": "Polling when idle (minutes)",
+    "polling_interval_charging": "Polling when charging (minutes)",
+    "keep_awake": "Keep car awake",
+    "persistent_climate_max_minutes": "Max runtime (minutes)",
+    "vin": "VIN",
+    "username": "Email",
+    "password": "Password",
+    "pollInterval": "Poll interval (seconds)",
+    "regionCode": "Region"
   },
   "pair": {
     "title": "Enter your credentials",
-		"validating": "Validating credentials",
+    "validating": "Validating credentials",
     "username": "Username",
     "password": "Password",
     "poll": "Poll interval (seconds)",
     "region": "Select your region",
-    "save": "Save"
+    "save": "Save",
+    "login": {
+      "title": "Nissan Connect Login",
+      "username": "Email",
+      "password": "Password"
+    },
+    "legacy": {
+      "title": "Nissan Leaf Login",
+      "username": "Email",
+      "password": "Password",
+      "region": "Region",
+      "pollInterval": "Poll interval (seconds)",
+      "validate": "Validate",
+      "validating": "Validating...",
+      "success": "Login successful!",
+      "error": "Login failed. Please check your credentials.",
+      "regions": {
+        "NE": "Europe",
+        "NCI": "Canada",
+        "NNA": "USA",
+        "NMA": "Australia",
+        "NML": "Japan"
+      }
+    }
+  },
+  "notifications": {
+    "climate_started": "Climate control started",
+    "climate_stopped": "Climate control stopped",
+    "climate_starting": "Starting climate control...",
+    "climate_stopping": "Stopping climate control...",
+    "climate_failed": "Climate control failed - please try again",
+    "climate_restarting": "Restarting climate control...",
+    "persistent_climate_starting": "Starting persistent climate control...",
+    "charging_started": "Charging started",
+    "refreshing": "Refreshing vehicle data..."
+  },
+  "errors": {
+    "auth_failed": "Authentication failed",
+    "no_vehicles": "No vehicles found on this account",
+    "api_error": "API error",
+    "timeout": "Request timed out"
   }
 }

@@ -1,10 +1,10 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.nissan.leaf",
-  "version": "1.0.23",
+  "version": "2.0.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
-  "brandColor": "#eb1b29",
+  "brandColor": "#C3002F",
   "homeyCommunityTopicId": 24641,
   "support": "mailto:jonas.enge@gmail.com",
   "platforms": [
@@ -15,36 +15,504 @@
     "no": "Nissan Leaf"
   },
   "description": {
-    "en": "Switch to smarter driving",
-    "no": "Bytt til smartere kjøring"
+    "en": "Control and monitor your Nissan Leaf electric vehicle",
+    "no": "Kontroller og overvåk din Nissan Leaf elbil"
   },
   "category": [
-    "tools"
+    "energy"
   ],
+  "tags": {
+    "en": [
+      "nissan",
+      "leaf",
+      "ev",
+      "electric vehicle",
+      "charging",
+      "climate",
+      "nissan connect",
+      "carwings",
+      "ze0",
+      "ze1"
+    ],
+    "no": [
+      "nissan",
+      "leaf",
+      "elbil",
+      "lading",
+      "klima",
+      "nissan connect",
+      "carwings"
+    ]
+  },
   "permissions": [],
   "images": {
     "small": "/assets/images/small.png",
-    "large": "/assets/images/large.png"
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
   },
   "author": {
     "name": "Jonas Enge",
     "email": "jonas.enge@gmail.com"
   },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Steffen Fridtjofsen",
+        "email": "steffen@oppdal.com"
+      }
+    ]
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "steffenoppdal"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/JonasEnge/homey-nissan-leaf/issues"
+  },
+  "homepage": "https://github.com/JonasEnge/homey-nissan-leaf",
+  "flow": {
+    "triggers": [
+      {
+        "title": {
+          "en": "Charging started"
+        },
+        "tokens": [
+          {
+            "name": "battery",
+            "type": "number",
+            "title": {
+              "en": "Battery level"
+            },
+            "example": 75
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "charging_started"
+      },
+      {
+        "title": {
+          "en": "Charging stopped"
+        },
+        "tokens": [
+          {
+            "name": "battery",
+            "type": "number",
+            "title": {
+              "en": "Battery level"
+            },
+            "example": 95
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "charging_stopped"
+      },
+      {
+        "title": {
+          "en": "Climate control started"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "climate_started"
+      },
+      {
+        "title": {
+          "en": "Climate control stopped"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "climate_stopped"
+      },
+      {
+        "title": {
+          "en": "Connected to charger"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "connected_to_charger"
+      },
+      {
+        "title": {
+          "en": "Vehicle data was refreshed"
+        },
+        "hint": {
+          "en": "Triggered when fresh data is received from the vehicle after a wake-up"
+        },
+        "tokens": [
+          {
+            "name": "battery",
+            "type": "number",
+            "title": {
+              "en": "Battery %"
+            }
+          },
+          {
+            "name": "range",
+            "type": "number",
+            "title": {
+              "en": "Range (km)"
+            }
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "data_refreshed"
+      },
+      {
+        "title": {
+          "en": "Disconnected from charger"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "disconnected_from_charger"
+      }
+    ],
+    "conditions": [
+      {
+        "title": {
+          "en": "Battery level is above"
+        },
+        "titleFormatted": {
+          "en": "Battery level is above [[percentage]]%"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          },
+          {
+            "type": "range",
+            "name": "percentage",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "label": "%",
+            "labelMultiplier": 1,
+            "labelDecimals": 0
+          }
+        ],
+        "id": "battery_above"
+      },
+      {
+        "title": {
+          "en": "Climate control is !{{on|off}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "climate_is_on"
+      },
+      {
+        "title": {
+          "en": "Is !{{charging|not charging}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "is_charging"
+      },
+      {
+        "title": {
+          "en": "Is !{{connected|not connected}} to charger"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "is_connected"
+      }
+    ],
+    "actions": [
+      {
+        "title": {
+          "en": "Refresh all vehicle data"
+        },
+        "hint": {
+          "en": "Wake the car and fetch fresh battery, climate, and location data. This may take up to 90 seconds."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "refresh_all_data"
+      },
+      {
+        "title": {
+          "en": "Refresh battery status"
+        },
+        "hint": {
+          "en": "Wake the vehicle and request fresh battery data (2019+ models only)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf-ze1"
+          }
+        ],
+        "id": "refresh_battery"
+      },
+      {
+        "title": {
+          "en": "Start charging"
+        },
+        "hint": {
+          "en": "Send command to start charging (pre-2019 models only)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf"
+          }
+        ],
+        "id": "start_charging"
+      },
+      {
+        "title": {
+          "en": "Start climate control"
+        },
+        "titleFormatted": {
+          "en": "Start climate control at [[temperature]]°C"
+        },
+        "hint": {
+          "en": "Start climate control at a specific temperature (2019+ models only)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf-ze1"
+          },
+          {
+            "type": "range",
+            "name": "temperature",
+            "min": 16,
+            "max": 28,
+            "step": 1,
+            "label": "°C",
+            "labelMultiplier": 1,
+            "labelDecimals": 0,
+            "value": 21
+          }
+        ],
+        "id": "start_climate"
+      },
+      {
+        "title": {
+          "en": "Start climate control"
+        },
+        "hint": {
+          "en": "Start climate control (pre-2019 models - temperature not supported)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf"
+          }
+        ],
+        "id": "start_climate_legacy"
+      },
+      {
+        "title": {
+          "en": "Start persistent climate"
+        },
+        "titleFormatted": {
+          "en": "Start persistent climate at [[temperature]]°C"
+        },
+        "hint": {
+          "en": "Start climate control that auto-restarts if it stops, until max time or vehicle moves (2019+ models only)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf-ze1"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "min": 16,
+            "max": 26,
+            "step": 1,
+            "placeholder": {
+              "en": "21"
+            },
+            "title": {
+              "en": "Temperature"
+            }
+          }
+        ],
+        "id": "start_persistent_climate"
+      },
+      {
+        "title": {
+          "en": "Stop climate control"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf|leaf-ze1"
+          }
+        ],
+        "id": "stop_climate"
+      },
+      {
+        "title": {
+          "en": "Stop persistent climate"
+        },
+        "hint": {
+          "en": "Stop persistent climate mode and turn off climate control (2019+ models only)"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=leaf-ze1"
+          }
+        ],
+        "id": "stop_persistent_climate"
+      }
+    ]
+  },
   "drivers": [
     {
       "name": {
-        "en": "Nissan Leaf"
+        "en": "Nissan Leaf (Pre-2019)",
+        "no": "Nissan Leaf (Før 2019)"
       },
       "class": "other",
       "capabilities": [
         "measure_battery",
-        "button_climate",
-        "button_charging",
-        "is_charging",
-        "is_connected",
-        "cruising_range_ac_on",
-        "cruising_range_ac_off"
+        "measure_range",
+        "measure_range_ac_on",
+        "charging_status",
+        "connected_status",
+        "refreshing_status",
+        "onoff.climate",
+        "button_start_charging",
+        "button_refresh_all",
+        "measure_latitude",
+        "measure_longitude"
       ],
+      "capabilitiesOptions": {
+        "onoff.climate": {
+          "title": {
+            "en": "Climate Control",
+            "no": "Klimakontroll"
+          }
+        },
+        "charging_status": {
+          "title": {
+            "en": "Charging",
+            "no": "Lader"
+          }
+        },
+        "connected_status": {
+          "title": {
+            "en": "Connected to Charger",
+            "no": "Koblet til lader"
+          }
+        },
+        "measure_range": {
+          "title": {
+            "en": "Range (AC off)",
+            "no": "Rekkevidde (AC av)"
+          },
+          "units": {
+            "en": "km"
+          }
+        },
+        "measure_range_ac_on": {
+          "title": {
+            "en": "Range (AC on)",
+            "no": "Rekkevidde (AC på)"
+          },
+          "units": {
+            "en": "km"
+          }
+        },
+        "button_start_charging": {
+          "title": {
+            "en": "Start Charging",
+            "no": "Start lading"
+          }
+        },
+        "button_refresh_all": {
+          "title": {
+            "en": "Refresh All Data",
+            "no": "Oppdater all data"
+          }
+        },
+        "measure_latitude": {
+          "title": {
+            "en": "Latitude",
+            "no": "Breddegrad"
+          }
+        },
+        "measure_longitude": {
+          "title": {
+            "en": "Longitude",
+            "no": "Lengdegrad"
+          }
+        }
+      },
       "energy": {
         "batteries": [
           "INTERNAL"
@@ -79,7 +547,6 @@
           "template": "add_devices"
         }
       ],
-      "id": "leaf",
       "settings": [
         {
           "id": "username",
@@ -170,7 +637,261 @@
             }
           ]
         }
-      ]
+      ],
+      "id": "leaf"
+    },
+    {
+      "name": {
+        "en": "Nissan Leaf (2019+)",
+        "no": "Nissan Leaf (2019+)"
+      },
+      "class": "other",
+      "capabilities": [
+        "measure_battery",
+        "measure_range",
+        "measure_charge_power",
+        "measure_odometer",
+        "measure_temperature.inside",
+        "onoff.climate",
+        "target_temperature",
+        "charging_status",
+        "connected_status",
+        "refreshing_status",
+        "button_refresh_all",
+        "measure_latitude",
+        "measure_longitude"
+      ],
+      "capabilitiesOptions": {
+        "measure_temperature.inside": {
+          "title": {
+            "en": "Inside Temperature",
+            "no": "Innertemperatur"
+          }
+        },
+        "onoff.climate": {
+          "title": {
+            "en": "Climate Control",
+            "no": "Klimakontroll"
+          }
+        },
+        "charging_status": {
+          "title": {
+            "en": "Charging",
+            "no": "Lader"
+          }
+        },
+        "connected_status": {
+          "title": {
+            "en": "Connected to Charger",
+            "no": "Koblet til lader"
+          }
+        },
+        "refreshing_status": {
+          "title": {
+            "en": "Refreshing Data",
+            "no": "Oppdaterer data"
+          }
+        },
+        "button_refresh_all": {
+          "title": {
+            "en": "Refresh All Data",
+            "no": "Oppdater all data"
+          }
+        },
+        "measure_range": {
+          "title": {
+            "en": "Range",
+            "no": "Rekkevidde"
+          },
+          "units": {
+            "en": "km"
+          }
+        },
+        "measure_odometer": {
+          "title": {
+            "en": "Odometer",
+            "no": "Kilometerstand"
+          },
+          "units": {
+            "en": "km"
+          }
+        },
+        "measure_charge_power": {
+          "title": {
+            "en": "Charging Power",
+            "no": "Ladeeffekt"
+          },
+          "units": {
+            "en": "kW"
+          }
+        },
+        "measure_latitude": {
+          "title": {
+            "en": "Latitude",
+            "no": "Breddegrad"
+          }
+        },
+        "measure_longitude": {
+          "title": {
+            "en": "Longitude",
+            "no": "Lengdegrad"
+          }
+        },
+        "target_temperature": {
+          "min": 16,
+          "max": 30,
+          "step": 1
+        }
+      },
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/leaf-ze1/assets/images/small.png",
+        "large": "/drivers/leaf-ze1/assets/images/large.png"
+      },
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Nissan Connect Login",
+              "no": "Nissan Connect innlogging"
+            },
+            "usernameLabel": {
+              "en": "Email",
+              "no": "E-post"
+            },
+            "passwordLabel": {
+              "en": "Password",
+              "no": "Passord"
+            }
+          },
+          "navigation": {
+            "next": "list_devices"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Polling Settings",
+            "no": "Polling-innstillinger"
+          },
+          "children": [
+            {
+              "id": "polling_interval_idle",
+              "type": "number",
+              "label": {
+                "en": "Polling when idle (minutes)",
+                "no": "Polling ved hvile (minutter)"
+              },
+              "value": 60,
+              "min": 15,
+              "max": 120,
+              "hint": {
+                "en": "How often to check when not connected to charger (saves 12V battery)",
+                "no": "Hvor ofte sjekke når ikke koblet til lader (sparer 12V batteri)"
+              }
+            },
+            {
+              "id": "polling_interval_charging",
+              "type": "number",
+              "label": {
+                "en": "Polling when charging (minutes)",
+                "no": "Polling under lading (minutter)"
+              },
+              "value": 10,
+              "min": 5,
+              "max": 30,
+              "hint": {
+                "en": "How often to check when connected or charging",
+                "no": "Hvor ofte sjekke når tilkoblet eller lader"
+              }
+            },
+            {
+              "id": "keep_awake",
+              "type": "checkbox",
+              "label": {
+                "en": "Keep car awake",
+                "no": "Hold bilen våken"
+              },
+              "value": false,
+              "hint": {
+                "en": "Poll every 30 minutes to keep car responsive (uses more 12V battery)",
+                "no": "Poll hvert 30. minutt for raskere respons (bruker mer 12V batteri)"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Persistent Climate",
+            "no": "Vedvarende klimakontroll"
+          },
+          "children": [
+            {
+              "id": "persistent_climate_max_minutes",
+              "type": "number",
+              "label": {
+                "en": "Max runtime (minutes)",
+                "no": "Maks kjøretid (minutter)"
+              },
+              "value": 30,
+              "min": 10,
+              "max": 120,
+              "hint": {
+                "en": "Maximum time persistent climate will run before auto-stopping",
+                "no": "Maksimal tid vedvarende klimakontroll kjører før automatisk stopp"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Vehicle",
+            "no": "Kjøretøy"
+          },
+          "children": [
+            {
+              "id": "vin",
+              "type": "text",
+              "label": {
+                "en": "VIN",
+                "no": "VIN"
+              },
+              "value": "",
+              "hint": {
+                "en": "Vehicle Identification Number (auto-detected during pairing)",
+                "no": "Kjøretøyets identifikasjonsnummer (automatisk oppdaget under paring)"
+              }
+            }
+          ]
+        }
+      ],
+      "id": "leaf-ze1"
     }
   ],
   "capabilities": {
@@ -195,6 +916,62 @@
       "setable": true,
       "uiComponent": "toggle",
       "uiQuickAction": false
+    },
+    "button_refresh_all": {
+      "type": "boolean",
+      "title": {
+        "en": "Refresh All Data"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "button",
+      "icon": "/assets/refresh.svg",
+      "insights": false
+    },
+    "button_start_charging": {
+      "type": "boolean",
+      "title": {
+        "en": "Start Charging"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "button",
+      "icon": "/assets/charging.svg",
+      "insights": false
+    },
+    "charging_status": {
+      "type": "boolean",
+      "title": {
+        "en": "Charging"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/charging.svg",
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Charging started"
+      },
+      "insightsTitleFalse": {
+        "en": "Charging stopped"
+      }
+    },
+    "connected_status": {
+      "type": "boolean",
+      "title": {
+        "en": "Connected"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/plug.svg",
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Connected to charger"
+      },
+      "insightsTitleFalse": {
+        "en": "Disconnected from charger"
+      }
     },
     "cruising_range_ac_off": {
       "type": "number",
@@ -251,6 +1028,109 @@
       "uiComponent": "sensor",
       "uiQuickAction": true,
       "icon": "/assets/pluggedin.svg"
+    },
+    "measure_charge_power": {
+      "type": "number",
+      "title": {
+        "en": "Charging Power"
+      },
+      "units": {
+        "en": "kW"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/charging.svg",
+      "insights": true,
+      "decimals": 1
+    },
+    "measure_latitude": {
+      "type": "number",
+      "title": {
+        "en": "Latitude"
+      },
+      "units": {
+        "en": "°"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "decimals": 6,
+      "insights": false
+    },
+    "measure_longitude": {
+      "type": "number",
+      "title": {
+        "en": "Longitude"
+      },
+      "units": {
+        "en": "°"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "decimals": 6,
+      "insights": false
+    },
+    "measure_odometer": {
+      "type": "number",
+      "title": {
+        "en": "Odometer"
+      },
+      "units": {
+        "en": "km"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/odometer.svg",
+      "insights": true,
+      "decimals": 0
+    },
+    "measure_range": {
+      "type": "number",
+      "title": {
+        "en": "Range"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": {
+        "en": "km"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 500,
+      "icon": "/assets/range.svg",
+      "insights": true
+    },
+    "measure_range_ac_on": {
+      "type": "number",
+      "title": {
+        "en": "Range (AC on)"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false,
+      "units": {
+        "en": "km"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 500,
+      "icon": "/assets/range.svg",
+      "insights": true
+    },
+    "refreshing_status": {
+      "type": "boolean",
+      "title": {
+        "en": "Refreshing"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/refresh.svg",
+      "insights": false
     }
   }
 }

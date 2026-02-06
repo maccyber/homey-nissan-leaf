@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "Start climate control"
+  },
+  "hint": {
+    "en": "Start climate control (pre-2019 models - temperature not supported)"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf"
+    }
+  ]
+}

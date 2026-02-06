@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Charging Power"
+  },
+  "units": {
+    "en": "kW"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/charging.svg",
+  "insights": true,
+  "decimals": 1
+}

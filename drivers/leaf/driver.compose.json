@@ -1,26 +1,89 @@
 {
   "name": {
-    "en": "Nissan Leaf"
+    "en": "Nissan Leaf (Pre-2019)",
+    "no": "Nissan Leaf (Før 2019)"
   },
   "class": "other",
   "capabilities": [
     "measure_battery",
-    "button_climate",
-    "button_charging",
-    "is_charging",
-    "is_connected",
-    "cruising_range_ac_on",
-    "cruising_range_ac_off"
+    "measure_range",
+    "measure_range_ac_on",
+    "charging_status",
+    "connected_status",
+    "refreshing_status",
+    "onoff.climate",
+    "button_start_charging",
+    "button_refresh_all",
+    "measure_latitude",
+    "measure_longitude"
   ],
+  "capabilitiesOptions": {
+    "onoff.climate": {
+      "title": {
+        "en": "Climate Control",
+        "no": "Klimakontroll"
+      }
+    },
+    "charging_status": {
+      "title": {
+        "en": "Charging",
+        "no": "Lader"
+      }
+    },
+    "connected_status": {
+      "title": {
+        "en": "Connected to Charger",
+        "no": "Koblet til lader"
+      }
+    },
+    "measure_range": {
+      "title": {
+        "en": "Range (AC off)",
+        "no": "Rekkevidde (AC av)"
+      },
+      "units": {
+        "en": "km"
+      }
+    },
+    "measure_range_ac_on": {
+      "title": {
+        "en": "Range (AC on)",
+        "no": "Rekkevidde (AC på)"
+      },
+      "units": {
+        "en": "km"
+      }
+    },
+    "button_start_charging": {
+      "title": {
+        "en": "Start Charging",
+        "no": "Start lading"
+      }
+    },
+    "button_refresh_all": {
+      "title": {
+        "en": "Refresh All Data",
+        "no": "Oppdater all data"
+      }
+    },
+    "measure_latitude": {
+      "title": {
+        "en": "Latitude",
+        "no": "Breddegrad"
+      }
+    },
+    "measure_longitude": {
+      "title": {
+        "en": "Longitude",
+        "no": "Lengdegrad"
+      }
+    }
+  },
   "energy": {
     "batteries": ["INTERNAL"]
   },
-  "platforms": [
-    "local"
-  ],
-  "connectivity": [
-    "cloud"
-  ],
+  "platforms": ["local"],
+  "connectivity": ["cloud"],
   "images": {
     "small": "{{driverAssetsPath}}/images/small.png",
     "large": "{{driverAssetsPath}}/images/large.png"
@@ -32,12 +95,97 @@
     {
       "id": "list_devices",
       "template": "list_devices",
-      "navigation": { "next": "add_devices" },
-      "options": { "singular": true }
+      "navigation": {
+        "next": "add_devices"
+      },
+      "options": {
+        "singular": true
+      }
     },
     {
       "id": "add_devices",
       "template": "add_devices"
+    }
+  ],
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "en": "Account",
+        "no": "Konto"
+      },
+      "children": [
+        {
+          "id": "username",
+          "type": "text",
+          "label": {
+            "en": "Email",
+            "no": "E-post"
+          },
+          "value": "",
+          "hint": {
+            "en": "Your NissanConnect email address",
+            "no": "Din NissanConnect e-postadresse"
+          }
+        },
+        {
+          "id": "password",
+          "type": "password",
+          "label": {
+            "en": "Password",
+            "no": "Passord"
+          },
+          "value": "",
+          "hint": {
+            "en": "Your NissanConnect password",
+            "no": "Ditt NissanConnect passord"
+          }
+        },
+        {
+          "id": "regionCode",
+          "type": "dropdown",
+          "label": {
+            "en": "Region",
+            "no": "Region"
+          },
+          "value": "NE",
+          "values": [
+            { "id": "NE", "label": { "en": "Europe", "no": "Europa" } },
+            { "id": "NCI", "label": { "en": "Canada", "no": "Canada" } },
+            { "id": "NNA", "label": { "en": "USA", "no": "USA" } },
+            { "id": "NMA", "label": { "en": "Australia", "no": "Australia" } },
+            { "id": "NML", "label": { "en": "Japan", "no": "Japan" } }
+          ],
+          "hint": {
+            "en": "Your Nissan region",
+            "no": "Din Nissan-region"
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "en": "Polling",
+        "no": "Polling"
+      },
+      "children": [
+        {
+          "id": "pollInterval",
+          "type": "number",
+          "label": {
+            "en": "Poll interval (seconds)",
+            "no": "Oppdateringsintervall (sekunder)"
+          },
+          "value": 240,
+          "min": 60,
+          "max": 3600,
+          "hint": {
+            "en": "How often to check vehicle status (default: 240 seconds / 4 minutes)",
+            "no": "Hvor ofte kjøretøystatus sjekkes (standard: 240 sekunder / 4 minutter)"
+          }
+        }
+      ]
     }
   ]
 }

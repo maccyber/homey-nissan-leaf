@@ -1,0 +1,12 @@
+{
+  "title": {
+    "en": "Climate control is !{{on|off}}"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf|leaf-ze1"
+    }
+  ]
+}

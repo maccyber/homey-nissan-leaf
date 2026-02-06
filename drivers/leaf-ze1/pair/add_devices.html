@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+      text-align: center;
+      padding: 60px 20px;
+      margin: 0;
+    }
+    h2 { 
+      color: #333; 
+      margin-bottom: 10px; 
+    }
+    .spinner { 
+      width: 40px; 
+      height: 40px; 
+      border: 4px solid #f3f3f3; 
+      border-top: 4px solid #C3002F; 
+      border-radius: 50%; 
+      animation: spin 1s linear infinite; 
+      margin: 30px auto; 
+    }
+    @keyframes spin { 
+      0% { transform: rotate(0deg); } 
+      100% { transform: rotate(360deg); } 
+    }
+    .hint { 
+      color: #999; 
+      font-size: 14px; 
+      font-style: italic; 
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Preparing your vehicle...</h2>
+  <div class="spinner"></div>
+  <p class="hint">This may take up to 60 seconds</p>
+  
+  <script>
+    // Listen for proceed signal from driver (after essential data fetched)
+    // The driver sends the device data so we can create the device
+    Homey.on('proceed', (device) => {
+      // Create the device with the data from the driver
+      Homey.createDevice(device)
+        .then(() => {
+          // Device created successfully, pairing complete
+          Homey.done();
+        })
+        .catch((err) => {
+          // Show error to user
+          Homey.alert('Failed to add device: ' + err.message);
+        });
+    });
+    
+    // Notify driver that this view is ready to receive events
+    // This prevents race condition where driver emits 'proceed' before we're listening
+    Homey.emit('view_ready');
+  </script>
+</body>
+</html>

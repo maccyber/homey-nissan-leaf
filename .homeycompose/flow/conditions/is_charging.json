@@ -1,0 +1,12 @@
+{
+  "title": {
+    "en": "Is !{{charging|not charging}}"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf|leaf-ze1"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": {
+    "en": "Is !{{connected|not connected}} to charger"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf|leaf-ze1"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "title": {
+    "en": "Refresh all vehicle data"
+  },
+  "hint": {
+    "en": "Wake the car and fetch fresh battery, climate, and location data. This may take up to 90 seconds."
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=leaf|leaf-ze1"
+    }
+  ]
+}
