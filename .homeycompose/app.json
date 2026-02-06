@@ -5,17 +5,17 @@
   "sdk": 3,
   "brandColor": "#C3002F",
   "homeyCommunityTopicId": 24641,
-  "support": "mailto:jonas.enge@gmail.com",
+  "support": "mailto:support@j7.no",
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Nissan Leaf",
-    "no": "Nissan Leaf"
+    "en": "Nissan Connect",
+    "no": "Nissan Connect"
   },
   "description": {
-    "en": "Control and monitor your Nissan Leaf electric vehicle",
-    "no": "Kontroller og overvåk din Nissan Leaf elbil"
+    "en": "Control and monitor your Nissan electric vehicle",
+    "no": "Kontroller og overvåk din Nissan elbil"
   },
   "category": [
     "energy"
@@ -50,21 +50,21 @@
     "xlarge": "/assets/images/xlarge.png"
   },
   "author": {
-    "name": "Jonas Enge",
-    "email": "jonas.enge@gmail.com"
+    "name": "Steffen Fridtjofsen",
+    "email": "steffen@oppdal.com"
   },
   "contributors": {
     "developers": [
       {
-        "name": "Steffen Fridtjofsen",
-        "email": "steffen@oppdal.com"
+        "name": "Jonas Enge",
+        "email": "jonas.enge@gmail.com"
       }
     ]
   },
   "contributing": {
     "donate": {
       "paypal": {
-        "username": "steffenoppdal"
+        "username": "fridtjofsen"
       }
     }
   },
